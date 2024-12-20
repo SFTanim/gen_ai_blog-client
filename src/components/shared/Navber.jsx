@@ -59,7 +59,12 @@ const Navber = () => {
               </div>
             </div>
           </div>
-          <Link className="btn btn-ghost text-2xl logoFont-Dancing-Script">GenAiBlog</Link>
+          <Link
+            to={"/"}
+            className="btn btn-ghost text-2xl logoFont-Dancing-Script"
+          >
+            GenAiBlog
+          </Link>
           <div className=" hidden lg:flex">
             {/* Large display */}
             <ul className="menu menu-horizontal px-1">{navber}</ul>

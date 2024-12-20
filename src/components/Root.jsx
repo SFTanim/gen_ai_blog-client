@@ -5,7 +5,7 @@ import Navber from "./shared/Navber";
 const Root = () => {
   const { darkTheme } = useAuth();
   return (
-    <div className="font-mont" data-theme={darkTheme ? "dark" : "light"}>
+    <div className="font-mont overflow-hidden" data-theme={darkTheme ? "dark" : "light"}>
       <Navber></Navber>
       <div className="container mx-auto min-h-screen px-2 lg:px-0 mt-8 lg:mt-14">
         <Outlet></Outlet>
