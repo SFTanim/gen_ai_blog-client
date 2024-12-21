@@ -6,7 +6,7 @@ const Navber = () => {
   const navber = (
     <>
       <li>
-        <a>All Blog</a>
+        <NavLink to={"/allBlog"}>All Blog</NavLink>
       </li>
       <li>
         <NavLink to={"/createBlog"}>Create a blog</NavLink>

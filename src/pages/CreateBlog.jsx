@@ -5,10 +5,12 @@ import useAxiosPublic from "./../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CreateBlog = () => {
   const axiosPublic = useAxiosPublic();
   const [input, setInput] = useState("");
+  const navigate = useNavigate();
 
   const {
     data: aiData,
@@ -46,6 +48,7 @@ const CreateBlog = () => {
           .post("/blogs", data)
           .then((res) => {
             if (res?.data?.acknowledged) {
+              navigate("/");
               Swal.fire({
                 title: "Done",
               });
