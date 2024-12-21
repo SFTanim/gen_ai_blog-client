@@ -3,24 +3,35 @@ import useAuth from "./../../hooks/useAuth";
 
 const Navber = () => {
   const { darkTheme, setDarkTheme } = useAuth();
+
+  const handleCloseDrawer = () => {
+    const drawerCheckbox = document.getElementById("my-drawer");
+    if (drawerCheckbox) {
+      drawerCheckbox.checked = false;
+    }
+  };
+
   const navber = (
     <>
-      <li>
+      <li onClick={handleCloseDrawer}>
+        <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li onClick={handleCloseDrawer}>
         <NavLink to={"/allBlog"}>All Blog</NavLink>
       </li>
-      <li>
+      <li onClick={handleCloseDrawer}>
         <NavLink to={"/createBlog"}>Create a blog</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className="">
-      <div className="navbar bg-base-100">
+    <div className=" ">
+      <div className="navbar navber-bg">
         <div className="navbar-start">
           <div className="dropdown">
             {/* Small display toggle button */}
-            <div className="drawer lg:hidden">
+            <div className="drawer lg:hidden z-10">
               <input id="my-drawer" type="checkbox" className="drawer-toggle" />
               <div className="drawer-content">
                 {/* Page content here */}
@@ -85,7 +96,7 @@ const Navber = () => {
 
             {/* sun icon */}
             <svg
-              className="swap-off h-10 w-10 fill-current"
+              className="swap-off h-10 w-10 fill-current z-0"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -93,7 +104,7 @@ const Navber = () => {
             </svg>
             {/* moon icon */}
             <svg
-              className="swap-on h-10 w-10 fill-current"
+              className="swap-on h-10 w-10 fill-current z-0"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >

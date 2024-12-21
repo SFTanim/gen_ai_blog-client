@@ -28,6 +28,16 @@
   background-color: var(--accent-color-hover);
 }
 
+.navber-bg {
+  background-color: rgba(var(--navber-background-color), 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.bg-color {
+  background-color: var(--background-color);
+}
+
 
 :root {
   --background-color: #f9fafb;
