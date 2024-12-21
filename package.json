@@ -21,6 +21,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.2",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.2",
     "use-local-storage": "^3.0.0",
     "yup": "^1.6.1"
   },

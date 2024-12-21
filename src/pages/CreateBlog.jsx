@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import useAxiosPublic from "./../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const CreateBlog = () => {
   const axiosPublic = useAxiosPublic();
@@ -23,7 +24,44 @@ const CreateBlog = () => {
     },
     enabled: !!input,
   });
-  console.log(aiData);
+
+  const handleBlogPost = () => {
+    const data = {
+      title: aiData.title,
+      subtitle: aiData.subtitle,
+      description: aiData.description,
+      userEmail: "sdfkkd@gamil.com",
+      userImage: "sfdksdfkdsjk",
+    };
+    Swal.fire({
+      title: "Are you sure you want to post it?",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      cancelButtonText: "Discard",
+      confirmButtonText: "Post it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic
+          .post("/blogs", data)
+          .then((res) => {
+            if (res?.data?.acknowledged) {
+              Swal.fire({
+                title: "Done",
+              });
+            }
+          })
+          .catch((err) =>
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: err.message,
+              footer: '<a href="#">Why do I have this issue?</a>',
+            })
+          );
+      }
+    });
+  };
 
   return (
     <div className="flex flex-col-reverse lg:flex-row items-center">
@@ -101,7 +139,14 @@ const CreateBlog = () => {
                       {aiData?.description}
                     </p>
                     <div className="card-actions">
-                      <button className="button-style">Post this</button>
+                      <button
+                        onClick={() => {
+                          handleBlogPost();
+                        }}
+                        className="button-style"
+                      >
+                        Post this
+                      </button>
                     </div>
                   </div>
                 </div>
