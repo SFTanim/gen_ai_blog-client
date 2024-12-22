@@ -38,6 +38,26 @@
   background-color: var(--background-color);
 }
 
+/* Navber Menu */
+#navbar-menu a {
+  color: var(--menu-font-color);
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  transition: all 0.5s ease-in-out;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+}
+
+#navbar-menu a:hover {
+  color: var(--accent-color);
+}
+
+#navbar-menu .active {
+  color: var(--accent-color);
+  background-color: transparent;
+  border-radius: 0;
+  border-bottom: 2px solid var(--accent-color);
+}
 
 :root {
   --background-color: #f9fafb;

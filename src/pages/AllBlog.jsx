@@ -23,7 +23,7 @@ const AllBlog = () => {
       </div>
     );
   }
-  console.log(allBlog);
+
   return (
     <div className="px-0 lg:px-8">
       <PageTitle

@@ -13,14 +13,47 @@ const Navber = () => {
 
   const navber = (
     <>
-      <li onClick={handleCloseDrawer}>
-        <NavLink to={"/"}>Home</NavLink>
+      <li id="navbar-menu" onClick={handleCloseDrawer}>
+        <NavLink
+          className={({ isActive, isPending, isTransitioning }) =>
+            [
+              isPending ? "pending" : "",
+              isActive ? "active" : "",
+              isTransitioning ? "transitioning" : "",
+            ].join(" ")
+          }
+          to={"/"}
+        >
+          Home
+        </NavLink>
       </li>
-      <li onClick={handleCloseDrawer}>
-        <NavLink to={"/allBlog"}>All Blog</NavLink>
+      <li id="navbar-menu" onClick={handleCloseDrawer}>
+        <NavLink
+          className={({ isActive, isPending, isTransitioning }) =>
+            [
+              isPending ? "pending" : "",
+              isActive ? "active" : "",
+              isTransitioning ? "transitioning" : "",
+            ].join(" ")
+          }
+          to={"/allBlog"}
+        >
+          All Blog
+        </NavLink>
       </li>
-      <li onClick={handleCloseDrawer}>
-        <NavLink to={"/createBlog"}>Create a blog</NavLink>
+      <li id="navbar-menu" onClick={handleCloseDrawer}>
+        <NavLink
+          className={({ isActive, isPending, isTransitioning }) =>
+            [
+              isPending ? "pending" : "",
+              isActive ? "active" : "",
+              isTransitioning ? "transitioning" : "",
+            ].join(" ")
+          }
+          to={"/createBlog"}
+        >
+          Create a blog
+        </NavLink>
       </li>
     </>
   );
