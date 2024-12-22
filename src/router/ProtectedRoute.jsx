@@ -21,6 +21,7 @@ const ProtectedRoute = ({ children }) => {
   if (!user) {
     Swal.fire({
       position: "top-end",
+      icon: "error",
       title: "You have to login first....",
       showConfirmButton: false,
       timer: 1500,

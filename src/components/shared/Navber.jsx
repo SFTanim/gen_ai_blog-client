@@ -185,7 +185,7 @@ const Navber = () => {
                   />
                 </div>
               ) : (
-                <div tabIndex={0} role="button" className="text-2xl">
+                <div tabIndex={0} role="button" className="text-2xl mr-2">
                   <FaRegUserCircle />
                 </div>
               )}

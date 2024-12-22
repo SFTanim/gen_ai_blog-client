@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useLocalStorage from "use-local-storage";
 import auth from "./../firebase/firebase.config";
 import {
+  createUserWithEmailAndPassword,
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -37,6 +38,13 @@ const AuthProvider = ({ children }) => {
       timer: 1500,
     });
   };
+
+  // Create User
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
 
   // Login with email and password
   const userLogin = (email, password) => {
@@ -79,6 +87,7 @@ const AuthProvider = ({ children }) => {
     user,
     userLogin,
     userLogout,
+    createUser,
     loading,
     setLoading,
     toastWarning,
