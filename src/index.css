@@ -16,6 +16,10 @@
   background-color: var(--background-color);
 } */
 
+.accentColor {
+  color: var(--accent-color);
+}
+
 .button-style {
   background-color: transparent;
   border: 2px solid;

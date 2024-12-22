@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import CreateBlog from "../pages/CreateBlog";
 import AllBlog from "../pages/AllBlog";
 import BlogDetails from "../pages/BlogDetails";
+import Login from './../components/shared/Login';
+import SignUp from './../components/shared/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "/createBlog",
         element: <CreateBlog></CreateBlog>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
       },
     ],
   },
