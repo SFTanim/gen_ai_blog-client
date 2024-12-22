@@ -25,7 +25,6 @@ const router = createBrowserRouter([
         path: "/allBlog/:id",
         element: (
           <ProtectedRoute>
-            {" "}
             <BlogDetails></BlogDetails>
           </ProtectedRoute>
         ),

@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "./../../hooks/useAuth";
 import { FaRegUserCircle } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Navber = () => {
-  const { darkTheme, setDarkTheme, user } = useAuth();
+  const { darkTheme, setDarkTheme, user, userLogout } = useAuth();
 
   const handleCloseDrawer = () => {
     const drawerCheckbox = document.getElementById("my-drawer");
@@ -12,6 +13,28 @@ const Navber = () => {
     }
   };
 
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure you want to logout?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Logout",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        userLogout();
+        Swal.fire({
+          title: "Successfully logged out.",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
+
+  // Navber Manu
   const navber = (
     <>
       <li id="navbar-menu" onClick={handleCloseDrawer}>
@@ -63,6 +86,7 @@ const Navber = () => {
     <div className=" ">
       <div className="navbar navber-bg">
         <div className="navbar-start">
+          {/* Small Screen Menu */}
           <div className="dropdown">
             {/* Small display toggle button */}
             <div className="drawer lg:hidden z-10">
@@ -104,12 +128,16 @@ const Navber = () => {
               </div>
             </div>
           </div>
+
+          {/* Website Logo */}
           <Link
             to={"/"}
             className="btn btn-ghost text-2xl logoFont-Dancing-Script"
           >
             GenAiBlog
           </Link>
+
+          {/* Large Screen Menu */}
           <div className=" hidden lg:flex">
             {/* Large display */}
             <ul className="menu menu-horizontal px-1">{navber}</ul>
@@ -127,7 +155,6 @@ const Navber = () => {
               className="theme-controller"
               value="synthwave"
             />
-
             {/* sun icon */}
             <svg
               className="swap-off h-10 w-10 fill-current z-0"
@@ -167,7 +194,7 @@ const Navber = () => {
                 className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 mt-5 shadow"
               >
                 <li>
-                  <a>Item 1</a>
+                  <button onClick={handleLogout}>Logout</button>
                 </li>
                 <li>
                   <a>Item 2</a>

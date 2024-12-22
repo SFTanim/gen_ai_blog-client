@@ -3,15 +3,19 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import PageTitle from "./../PageTitle";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { googleSignIn, githubSignIn, setLoading, toastWarning, toastSuccess } =
+  const {userLogin, googleSignIn, githubSignIn, setLoading, toastWarning, toastSuccess } =
     useAuth();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+  console.log(location?.state);
 
   //   Google Login
   const handleGoogleLogin = () => {
@@ -27,7 +31,7 @@ const Login = () => {
 
         toastSuccess("Successfully logged in.");
         {
-          navigate(location?.state ? location.state : "/");
+          navigate(location?.state ? location?.state : "/");
         }
       })
       .catch(() => {
@@ -94,10 +98,28 @@ const Login = () => {
                   return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                  setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                  }, 400);
+                  console.log(values);
+                  userLogin(values?.email, values?.password)
+                  .then(() => {
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "Successfully logged in",
+                      showConfirmButton: false,
+                      timer: 2500,
+                    });
+                    navigate(location?.state ? location?.state : "/");
+                  })
+                  .catch((error) => {
+                    if (error?.code == "auth/invalid-email") {
+                        toastWarning("Please provide a valid email");
+                    }
+                    if (error?.code == "auth/invalid-credential") {
+                        toastWarning("Please provide a valid Password");
+                    }
+                  });
+
+                  setSubmitting(false);
                 }}
               >
                 {({ isSubmitting }) => (
