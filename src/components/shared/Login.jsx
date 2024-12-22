@@ -3,11 +3,61 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import PageTitle from "./../PageTitle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
-  const handleGoogleLogin = () => {};
-  const handleGitHubLogin = () => {};
+  const { googleSignIn, githubSignIn, setLoading, toastWarning, toastSuccess } =
+    useAuth();
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
+
+  //   Google Login
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then((res) => {
+        const userInfo = {
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+          photo: res?.user?.photoURL,
+          role: "user",
+        };
+        axiosPublic.post("/users", userInfo);
+
+        toastSuccess("Successfully logged in.");
+        {
+          navigate(location?.state ? location.state : "/");
+        }
+      })
+      .catch(() => {
+        toastWarning("Login unsuccessful.");
+        setLoading(false);
+      });
+  };
+
+  //   Github Login
+  const handleGitHubLogin = () => {
+    githubSignIn()
+      .then((res) => {
+        const userInfo = {
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+          photo: res?.user?.photoURL,
+          role: "user",
+        };
+        axiosPublic.post("/users", userInfo);
+
+        toastSuccess("Successfully logged in.");
+        {
+          navigate(location?.state ? location.state : "/");
+        }
+      })
+      .catch(() => {
+        toastWarning("Login unsuccessful.");
+        setLoading(false);
+      });
+  };
   return (
     <div>
       <div className="hero">
@@ -33,7 +83,7 @@ const Login = () => {
                 validate={(values) => {
                   const errors = {};
                   if (!values.email) {
-                    errors.email = "Required";
+                    errors.email = "*Required";
                   } else if (
                     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
                       values.email
@@ -61,7 +111,9 @@ const Login = () => {
                       type="email"
                       name="email"
                     />
-                    <ErrorMessage name="email" component="div" />
+                    <div className="text-red-600 text-right">
+                      <ErrorMessage name="email" component="div" />
+                    </div>
 
                     {/* Password */}
                     <label className="label">

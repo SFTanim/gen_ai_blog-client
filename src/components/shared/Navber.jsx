@@ -1,8 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "./../../hooks/useAuth";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const Navber = () => {
-  const { darkTheme, setDarkTheme } = useAuth();
+  const { darkTheme, setDarkTheme, user } = useAuth();
 
   const handleCloseDrawer = () => {
     const drawerCheckbox = document.getElementById("my-drawer");
@@ -145,9 +146,41 @@ const Navber = () => {
             </svg>
           </label>
 
-          <div className="">
-            <Link to={"/login"} className="btn">Login</Link>
-          </div>
+          {/* Login / Profile Icon */}
+          {user ? (
+            <div className="dropdown dropdown-end">
+              {user?.photoURL ? (
+                <div tabIndex={0} role="button" className="">
+                  <img
+                    className="w-9 rounded-full"
+                    src={user?.photoURL}
+                    alt=""
+                  />
+                </div>
+              ) : (
+                <div tabIndex={0} role="button" className="text-2xl">
+                  <FaRegUserCircle />
+                </div>
+              )}
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 mt-5 shadow"
+              >
+                <li>
+                  <a>Item 1</a>
+                </li>
+                <li>
+                  <a>Item 2</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <div className="">
+              <Link to={"/login"} className="btn">
+                Login
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

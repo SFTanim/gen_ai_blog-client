@@ -4,8 +4,9 @@ import Home from "../pages/Home";
 import CreateBlog from "../pages/CreateBlog";
 import AllBlog from "../pages/AllBlog";
 import BlogDetails from "../pages/BlogDetails";
-import Login from './../components/shared/Login';
-import SignUp from './../components/shared/SignUp';
+import Login from "./../components/shared/Login";
+import SignUp from "./../components/shared/SignUp";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/allBlog/:id",
-        element: <BlogDetails></BlogDetails>,
+        element: (
+          <ProtectedRoute>
+            {" "}
+            <BlogDetails></BlogDetails>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/createBlog",
-        element: <CreateBlog></CreateBlog>,
+        element: (
+          <ProtectedRoute>
+            <CreateBlog></CreateBlog>
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/login",
