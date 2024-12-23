@@ -16,10 +16,26 @@
   font-family: "Montserrat", serif;
 }
 
-/* .lottie-bg {
-  background-color: var(--background-color);
-} */
+.font-color {
+  color: var(--primary-text-color);
+}
 
+.PageTitle2 {
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent-color);
+  text-underline-offset: 5px;
+  text-decoration-thickness: 5px;
+}
+.PageTitle {
+  border-left: 5px solid var(--accent-color);
+  padding-left: 8px;
+  margin-bottom: 10px;
+
+}
+
+.card-bg-color {
+  background-color: var(--card-background-color);
+}
 .accentColor {
   color: var(--accent-color);
 }
@@ -36,6 +52,7 @@
   text-shadow: 2px black;
   border-radius: 10px;
   padding: 5px 15px 5px 15px;
+  font-weight: 700;
 }
 .button-style:hover {
   background-color: var(--accent-color-hover);
@@ -86,11 +103,11 @@
 }
 
 :root {
-  --background-color: #f9fafb;
+  --background-color: #ffffff;
   --circle-background-color: #bdbdbd;
   --card-background-color: #ffffff;
   --primary-text-color: #0a0a0a;
-  --accent-color: #ef4444;
+  --accent-color: rgb(239 68 68 / var(--tw-text-opacity, 1));
   --accent-color-rgb: 59, 131, 246;
   --accent-color-hover: #15d3bd6c;
   --section-border-color: #15d3bd;
@@ -99,14 +116,14 @@
 }
 
 [data-theme="dark"] {
-  --background-color: #2a3439;
+  --background-color: #1a1a1a;
   --circle-background-color: #ffffff;
-  --card-background-color: rgb(31 41 55);
-  --primary-text-color: #f5f5f5;
+  --card-background-color: #2c3442a9;
+  --primary-text-color: #ededed;
   --accent-color: #ef4444;
   --accent-color-rgb: 21, 211, 189;
   --accent-color-hover: rgb(26, 32, 41);
   --section-border-color: black;
-  --navber-background-color: 31, 41, 55;
+  --navber-background-color: 26, 26, 26;
   --menu-font-color: white;
 }

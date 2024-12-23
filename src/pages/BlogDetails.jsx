@@ -28,10 +28,10 @@ const BlogDetails = () => {
           <div className="card bg-base-100 h-full shadow-xl">
             <div className="p-6 space-y-2 flex flex-col justify-between h-full">
               <div className="space-y-2">
-                <h2 className="text-lg lg:text-3xl font-semibold">
+                <h2 className="text-xl lg:text-3xl font-semibold">
                   {allBlog?.title}
                 </h2>
-                <p className="text-xs lg:text-base font-light">
+                <p className="text-xs lg:text-base font-extralight">
                   {allBlog?.subtitle}
                 </p>
                 <p className="font-medium text-wrap">{allBlog?.description}</p>

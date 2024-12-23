@@ -72,13 +72,14 @@ const CreateBlog = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center container mx-auto">
+    <div className="flex flex-col-reverse lg:flex-row items-center container mx-auto p-2 lg:pt-10">
       {/* LottoImage */}
       <DotLottieReact
         src="https://lottie.host/7ee26a40-3808-4826-a1a5-de8af7083974/73w9BXYyAY.lottie"
         loop
         autoplay
         className="w-full lg:w-1/3 flex-1 mt-16 lg:mt-0 h-full "
+        data-aos="fade-left"
       />
 
       {/* Form Side */}
@@ -89,9 +90,10 @@ const CreateBlog = () => {
             "Type a paragraph about your blog topic or idea, and we'll generate a catchy title and description for you!"
           }
         ></PageTitle>
+
         <div className="mt-4">
           {isLoading ? (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4" data-aos="fade-up">
               <div className="skeleton h-32 w-full"></div>
               <div className="skeleton h-4 w-28"></div>
               <div className="skeleton h-4 w-full"></div>
@@ -99,7 +101,7 @@ const CreateBlog = () => {
             </div>
           ) : isError ? (
             // Error State
-            <div className="text-red-500 text-center">
+            <div className="text-red-500 text-center" data-aos="fade-up">
               <div role="alert" className="alert">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +137,7 @@ const CreateBlog = () => {
               </div>
             </div>
           ) : aiData ? (
-            <div className="flex  flex-col gap-4">
+            <div className="flex  flex-col gap-4" data-aos="fade-up">
               <div className="flex  flex-col gap-4 min-h-full">
                 <div className="card bg-base-100 h-full shadow-xl">
                   <div className="p-6 space-y-2">
@@ -146,7 +148,7 @@ const CreateBlog = () => {
                     <p className="font-medium text-wrap">
                       {aiData?.description}
                     </p>
-                    <div className="card-actions">
+                    <div className="card-actions justify-end">
                       <button
                         onClick={() => {
                           handleBlogPost();
@@ -161,7 +163,7 @@ const CreateBlog = () => {
               </div>
             </div>
           ) : (
-            <div className="mt-2">
+            <div className="mt-2" data-aos="fade-up">
               <Formik
                 initialValues={{ message: "" }}
                 validate={(values) => {
@@ -195,7 +197,7 @@ const CreateBlog = () => {
                     </div>
                     <div className="flex justify-center lg:justify-end">
                       <button
-                        className="button-style w-full"
+                        className="button-style w-fit"
                         type="submit"
                         disabled={isSubmitting}
                       >

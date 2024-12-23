@@ -33,9 +33,9 @@ const AllBlog = () => {
         }
       ></PageTitle>
 
-      <div className="mt-4">
+      <div className="mt-10">
         {isLoading ? (
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4" data-aos="fade-up">
             <div className="skeleton h-32 w-full"></div>
             <div className="skeleton h-4 w-28"></div>
             <div className="skeleton h-4 w-full"></div>
@@ -43,7 +43,7 @@ const AllBlog = () => {
           </div>
         ) : isError ? (
           // Error State
-          <div className="text-red-500 text-center">
+          <div className="text-red-500 text-center" data-aos="fade-up">
             <div role="alert" className="alert">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -78,12 +78,12 @@ const AllBlog = () => {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
             {Array.isArray(allBlog) && allBlog.length > 0 ? (
               allBlog?.map((blog, idx) => (
-                <div key={idx} className="min-h-full">
+                <div key={idx} className="min-h-full" data-aos="fade-up">
                   <div className="flex  flex-col gap-4 h-full">
-                    <div className="card bg-base-100 h-full shadow-xl">
+                    <div className="card card-bg-color h-full shadow-xl">
                       <div className="p-6 space-y-2 flex flex-col justify-between h-full">
                         <div className="space-y-2">
                           <h2 className="text-lg lg:text-xl font-semibold">
@@ -116,7 +116,7 @@ const AllBlog = () => {
                 </div>
               ))
             ) : (
-              <p className="">No available blog</p>
+              <p className="accentColor"  data-aos="fade-up">No available blog</p>
             )}
           </div>
         )}

@@ -50,7 +50,7 @@ const Banner = () => {
         }}
       />
 
-      <div className="hero min-h-screen relative z-30 flex flex-col justify-center items-center text-center container mx-auto">
+      <div className="hero min-h-screen relative z-30 flex flex-col justify-center items-center text-center container mx-auto"  data-aos="fade-up">
         <h1 className="mb-5 text-4xl font-bold">
           Turn Ideas into Blogs Instantly with
         </h1>
@@ -60,7 +60,7 @@ const Banner = () => {
           tool. Instantly transform your ideas into engaging blogs. Say goodbye
           to writer&apos;s block and hello to effortless content creation!
         </p>
-        <Link to={"/createBlog"} className="button-style2 uppercase">
+        <Link to={"/createBlog"} className="button-style2 capitalize">
           Write Now
         </Link>
       </div>

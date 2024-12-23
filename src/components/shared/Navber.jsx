@@ -194,11 +194,8 @@ const Navber = () => {
                 tabIndex={0}
                 className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 mt-5 shadow"
               >
-                <li>
-                  <button onClick={handleLogout}>Logout</button>
-                </li>
-                <li>
-                  <a>Item 2</a>
+                <li className="">
+                  <button className="w-full " onClick={handleLogout}><h3 className="border">Logout</h3></button>
                 </li>
               </ul>
             </div>
