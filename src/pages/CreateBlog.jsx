@@ -3,7 +3,7 @@ import PageTitle from "../components/PageTitle";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import useAxiosPublic from "./../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,11 @@ const CreateBlog = () => {
   const axiosPublic = useAxiosPublic();
   const [input, setInput] = useState("");
   const navigate = useNavigate();
+
+  //   Scroll From Top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const {
     data: aiData,
@@ -67,7 +72,7 @@ const CreateBlog = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center">
+    <div className="flex flex-col-reverse lg:flex-row items-center container mx-auto">
       {/* LottoImage */}
       <DotLottieReact
         src="https://lottie.host/7ee26a40-3808-4826-a1a5-de8af7083974/73w9BXYyAY.lottie"

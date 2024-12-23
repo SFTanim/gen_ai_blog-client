@@ -25,7 +25,7 @@ const AllBlog = () => {
   }
 
   return (
-    <div className="px-0 lg:px-8">
+    <div className="px-0 lg:px-8 container mx-auto">
       <PageTitle
         heading={"All Blogs"}
         subHeading={

@@ -7,12 +7,12 @@ const Root = () => {
   return (
     <div
       className="font-mont overflow-hidden "
-      data-theme={darkTheme ? "dark" : "light" }
+      data-theme={darkTheme ? "dark" : "light"}
     >
       <div className="fixed z-30 w-full">
         <Navber></Navber>
       </div>
-      <div className="container mx-auto min-h-screen px-2 lg:px-0 mt-20 lg:mt-28">
+      <div className=" min-h-screen px-2 lg:px-0 mt-20 lg:mt-28">
         <Outlet></Outlet>
       </div>
     </div>
