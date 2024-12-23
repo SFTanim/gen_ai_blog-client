@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import { PropTypes } from "prop-types";
+import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const ProtectedRoute = ({ children }) => {

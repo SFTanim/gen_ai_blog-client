@@ -1,8 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.lobsterFont {
+  font-family: "Lobster", serif;
+}
 
 .logoFont-Dancing-Script {
   font-family: "Dancing Script", serif;
@@ -32,6 +36,19 @@
   background-color: var(--accent-color-hover);
 }
 
+.button-style2 {
+  background-color: transparent;
+  font-weight: 700;
+  border: 2px solid;
+  color: var(--accent-color);
+  text-shadow: 2px black;
+  border-radius: 10px;
+  padding: 5px 15px 5px 15px;
+}
+.button-style2:hover {
+  background-color: var(--accent-color-hover);
+}
+
 .navber-bg {
   background-color: rgba(var(--navber-background-color), 0.6);
   backdrop-filter: blur(12px);
@@ -48,7 +65,7 @@
   text-transform: capitalize;
   padding: 0.5rem 1rem;
   transition: all 0.5s ease-in-out;
-  font-weight: 500;
+  font-weight: 400;
   border-bottom: 2px solid transparent;
 }
 

@@ -48,7 +48,7 @@ const CreateBlog = () => {
           .post("/blogs", data)
           .then((res) => {
             if (res?.data?.acknowledged) {
-              navigate("/");
+              navigate("/allBlog");
               Swal.fire({
                 title: "Done",
               });

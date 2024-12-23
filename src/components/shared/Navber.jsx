@@ -130,11 +130,12 @@ const Navber = () => {
           </div>
 
           {/* Website Logo */}
-          <Link
+      
+         <Link
             to={"/"}
-            className="btn btn-ghost text-2xl logoFont-Dancing-Script"
+            className="btn btn-ghost"
           >
-            GenAiBlog
+            <h2 className="text-2xl lg:text-3xl logoFont-Dancing-Script">GenAiBlog</h2>
           </Link>
 
           {/* Large Screen Menu */}

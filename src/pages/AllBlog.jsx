@@ -89,7 +89,7 @@ const AllBlog = () => {
                           <h2 className="text-lg lg:text-xl font-semibold">
                             {blog?.title}
                           </h2>
-                          <p className="text-xs lg:text-base">
+                          <p className="text-xs lg:text-base font-light">
                             {blog?.subtitle}
                           </p>
                           <p className="font-medium text-wrap">
