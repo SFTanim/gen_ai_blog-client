@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
-  console.log(location);
   if (loading) {
     return (
       <div>

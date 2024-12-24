@@ -8,7 +8,6 @@ const useAllBlog = (id) => {
     queryKey: ["data"],
     queryFn: async () => {
       if (id) {
-        console.log("id fom useallblog: ", id);
         const res = await axiosPublic.get(`/blog/${id}`);
         return res.data;
       } else {

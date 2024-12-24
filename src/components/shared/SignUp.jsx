@@ -76,7 +76,6 @@ const SignUp = () => {
                     photo: values?.photoURL,
                     role: "user",
                   };
-                  console.log(userData);
                   axiosPublic
                     .post("/users", userData)
                     .then((res) => {

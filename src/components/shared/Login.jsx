@@ -108,7 +108,6 @@ const Login = () => {
                   return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                  console.log(values);
                   userLogin(values?.email, values?.password)
                     .then(() => {
                       Swal.fire({

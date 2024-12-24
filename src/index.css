@@ -4,6 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.pagination{
+  background-color: var(--background-color);
+}
+.pagination ul{
+  font-weight: 800;
+  flex-wrap: wrap;
+}
+.pagination ul li a{
+  padding: 10px;
+}
+.pagination ul li:hover{
+  background-color: var(--accent-color-hover);
+}
+.pagination-active{
+  background-color: var(--accent-color);
+}
+
+.label option{
+  background-color: var(--background-color);
+}
+
+
+
 .lobsterFont {
   font-family: "Lobster", serif;
 }
@@ -20,6 +44,8 @@
   color: var(--primary-text-color);
 }
 
+
+
 .PageTitle2 {
   text-decoration-line: underline;
   text-decoration-color: var(--accent-color);
@@ -31,6 +57,7 @@
   padding-left: 8px;
   margin-bottom: 10px;
 }
+
 
 .card-bg-color {
   background-color: var(--card-background-color);
@@ -117,7 +144,7 @@
   --card-background-color: #2c3442a9;
   --primary-text-color: #ededed;
   --accent-color: rgb(239 68 68 / var(--tw-text-opacity, 1));
-  --accent-color-hover: rgb(26, 32, 41);
+  --accent-color-hover: rgb(41, 49, 61);
   --navber-background-color: 26, 26, 26;
   --menu-font-color: white;
 }

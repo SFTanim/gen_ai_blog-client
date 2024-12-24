@@ -175,7 +175,6 @@ const CreateBlog = () => {
                 }}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   setInput(values?.message);
-                  console.log(values?.message);
                   resetForm();
                   setSubmitting(false);
                 }}

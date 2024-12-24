@@ -1,17 +1,35 @@
-// import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../hooks/useAxiosPublic";
 import PageTitle from "./../components/PageTitle";
 import { Link } from "react-router-dom";
 import useAllBlog from "../hooks/useAllBlog";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
 
 const AllBlog = () => {
-  const { data: allBlog, isLoading, isError, error, refetch } = useAllBlog();
-
   //   Scroll From Top
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const { data: allBlog, isLoading, isError, error, refetch } = useAllBlog();
+  const [blogPerPage, setBlogPerPage] = useState(3);
+  const [itemOffset, setItemOffset] = useState(0);
+  const endOffset = itemOffset + blogPerPage;
+  // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+  const currentItems = allBlog?.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(allBlog?.length / blogPerPage);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * blogPerPage) % allBlog?.length;
+    setItemOffset(newOffset);
+  };
+
+  const handleBlogOnPage = (e) => {
+    const blogNumber = parseInt(e.target.value);
+    const event = { selected: 0 };
+    setBlogPerPage(blogNumber);
+    handlePageClick(event);
+  };
 
   if (isLoading) {
     return (
@@ -79,8 +97,8 @@ const AllBlog = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
-            {Array.isArray(allBlog) && allBlog.length > 0 ? (
-              allBlog?.map((blog, idx) => (
+            {Array.isArray(currentItems) && currentItems.length > 0 ? (
+              currentItems?.map((blog, idx) => (
                 <div key={idx} className="min-h-full" data-aos="fade-up">
                   <div className="flex  flex-col gap-4 h-full">
                     <div className="card card-bg-color h-full shadow-xl">
@@ -96,7 +114,7 @@ const AllBlog = () => {
                             {blog?.description?.split(" ").length >= 25
                               ? blog?.description
                                   ?.split(" ")
-                                  .slice(0, 25)
+                                  ?.slice(0, 25)
                                   .join(" ")
                               : blog?.description}
                             ...........
@@ -116,10 +134,46 @@ const AllBlog = () => {
                 </div>
               ))
             ) : (
-              <p className="accentColor"  data-aos="fade-up">No available blog</p>
+              <p className="accentColor" data-aos="fade-up">
+                No available blog
+              </p>
             )}
           </div>
         )}
+      </div>
+
+      {/* Pagination */}
+      <div className="flex flex-col lg:flex-row items-center mt-8 justify-center">
+        <div className="flex flex-row justify-center items-center p-4 rounded-lg pagination ">
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="Next >"
+            previousLabel="< Previous"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            renderOnZeroPageCount={null}
+            containerClassName="flex gap-2"
+            pageClassName="flex justify-center items-center rounded cursor-pointer"
+            activeClassName="pagination-active text-white"
+            previousClassName="flex justify-center items-center  rounded cursor-pointer"
+            nextClassName="flex justify-center items-center  rounded cursor-pointer"
+            disabledClassName="opacity-50 cursor-not-allowed"
+            breakClassName="flex justify-center items-center rounded"
+          />
+        </div>
+        <label className="form-control label">
+          <select
+            onChange={handleBlogOnPage}
+            className="select select-bordered bg-transparent font-color"
+          >
+            <option>1</option>
+            <option>2</option>
+            <option selected>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </label>
       </div>
     </div>
   );
