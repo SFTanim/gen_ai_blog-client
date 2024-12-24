@@ -83,7 +83,7 @@ const Navber = () => {
   );
 
   return (
-    <div className=" ">
+    <div className="">
       <div className="navbar navber-bg">
         <div className="navbar-start">
           {/* Small Screen Menu */}
@@ -192,10 +192,10 @@ const Navber = () => {
               )}
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 mt-5 shadow"
+                className="dropdown-content menu navber-bg2 rounded-box z-[1] w-52 p-2 mt-5 shadow"
               >
                 <li className="">
-                  <button className="w-full " onClick={handleLogout}><h3 className="border">Logout</h3></button>
+                  <button className="w-full border flex justify-center button-style2" onClick={handleLogout}>Logout</button>
                 </li>
               </ul>
             </div>

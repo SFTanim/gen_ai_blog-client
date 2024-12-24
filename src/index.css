@@ -71,6 +71,12 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
+.navber-bg2 {
+  background-color: rgba(var(--navber-background-color), 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 .bg-color {
   background-color: var(--background-color);
 }

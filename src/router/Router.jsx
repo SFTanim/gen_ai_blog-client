@@ -7,11 +7,13 @@ import BlogDetails from "../pages/BlogDetails";
 import Login from "./../components/shared/Login";
 import SignUp from "./../components/shared/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
+import Error404 from "../pages/Error404";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <Error404></Error404>,
     children: [
       {
         path: "/",
