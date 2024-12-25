@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const CreateBlog = () => {
-  const {user}= useAuth()
+  const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [input, setInput] = useState("");
   const navigate = useNavigate();
@@ -42,6 +42,8 @@ const CreateBlog = () => {
       userEmail: user?.email,
       userName: user?.displayName,
       userImage: user?.photoURL,
+      dislike: [],
+      like: [],
     };
     Swal.fire({
       title: "Are you sure you want to post it?",
@@ -96,7 +98,7 @@ const CreateBlog = () => {
 
         <div className="mt-4">
           {isLoading ? (
-            <div className="flex flex-col gap-4" data-aos="fade-up">
+            <div className="flex flex-col gap-4 shadow-lg" data-aos="fade-up">
               <div className="skeleton h-32 w-full"></div>
               <div className="skeleton h-4 w-28"></div>
               <div className="skeleton h-4 w-full"></div>
