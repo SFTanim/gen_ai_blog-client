@@ -4,6 +4,7 @@ import useAllBlog from "../hooks/useAllBlog";
 import { useEffect, useState } from "react";
 
 import ReactPaginate from "https://cdn.skypack.dev/react-paginate@7.1.3";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const AllBlog = () => {
   //   Scroll From Top
@@ -16,7 +17,9 @@ const AllBlog = () => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + blogPerPage;
   // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-  const currentItems = allBlog?.slice(itemOffset, endOffset);
+  const currentItems = Array.isArray(allBlog)
+    ? allBlog.slice(itemOffset, endOffset)
+    : [];
   const pageCount = Math.ceil(allBlog?.length / blogPerPage);
 
   const handlePageClick = (event) => {
@@ -100,9 +103,34 @@ const AllBlog = () => {
             {Array.isArray(currentItems) && currentItems.length > 0 ? (
               currentItems?.map((blog, idx) => (
                 <div key={idx} className="min-h-full" data-aos="fade-up">
-                  <div className="flex  flex-col gap-4 h-full">
-                    <div className="card card-bg-color h-full shadow-xl">
-                      <div className="p-6 space-y-2 flex flex-col justify-between h-full">
+                  <div className="flex flex-col gap-4 h-full">
+                    <div className="card p-6 card-bg-color h-full shadow-xl">
+                      <div className="mb-4 flex gap-3">
+                        <div className="flex items-center">
+                          {blog?.userImage ? (
+                            <div tabIndex={0} role="button" className="">
+                              <img
+                                className="w-9 rounded-full"
+                                src={blog?.userImage || ""}
+                                alt="Profile"
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              tabIndex={0}
+                              role="button"
+                              className="text-3xl mr-2"
+                            >
+                              <FaRegUserCircle />
+                            </div>
+                          )}
+                        </div>
+                        <div className="py-2">
+                          <h2 className="font-bold">{blog?.userName}</h2>
+                          <h2 className="font-light">{blog?.userEmail}</h2>
+                        </div>
+                      </div>
+                      <div className=" space-y-2 flex flex-col justify-between h-full">
                         <div className="space-y-2">
                           <h2 className="text-lg lg:text-xl font-semibold">
                             {blog?.title}
@@ -120,7 +148,7 @@ const AllBlog = () => {
                             ...........
                           </p>
                         </div>
-                        <div className="card-actions">
+                        <div className="card-actions justify-end">
                           <Link
                             to={`/allBlog/${blog._id}`}
                             className="button-style"
@@ -166,10 +194,11 @@ const AllBlog = () => {
           <select
             onChange={handleBlogOnPage}
             className="select select-bordered bg-transparent font-color"
+            defaultValue={3}
           >
             <option>1</option>
             <option>2</option>
-            <option selected>3</option>
+            <option>3</option>
             <option>4</option>
             <option>5</option>
           </select>

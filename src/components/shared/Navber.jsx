@@ -130,12 +130,11 @@ const Navber = () => {
           </div>
 
           {/* Website Logo */}
-      
-         <Link
-            to={"/"}
-            className="btn btn-ghost"
-          >
-            <h2 className="text-2xl lg:text-3xl logoFont-Dancing-Script">GenAiBlog</h2>
+
+          <Link to={"/"} className="btn btn-ghost">
+            <h2 className="text-2xl lg:text-3xl logoFont-Dancing-Script">
+              GenAiBlog
+            </h2>
           </Link>
 
           {/* Large Screen Menu */}
@@ -181,8 +180,8 @@ const Navber = () => {
                 <div tabIndex={0} role="button" className="">
                   <img
                     className="w-9 rounded-full"
-                    src={user?.photoURL}
-                    alt=""
+                    src={user?.photoURL || ""}
+                    alt="Profile"
                   />
                 </div>
               ) : (
@@ -195,7 +194,12 @@ const Navber = () => {
                 className="dropdown-content menu navber-bg2 rounded-box z-[1] w-52 p-2 mt-5 shadow"
               >
                 <li className="">
-                  <button className="w-full border flex justify-center button-style2" onClick={handleLogout}>Logout</button>
+                  <button
+                    className="w-full border flex justify-center button-style2"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </button>
                 </li>
               </ul>
             </div>

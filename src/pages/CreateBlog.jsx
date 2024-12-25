@@ -6,8 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const CreateBlog = () => {
+  const {user}= useAuth()
   const axiosPublic = useAxiosPublic();
   const [input, setInput] = useState("");
   const navigate = useNavigate();
@@ -37,8 +39,9 @@ const CreateBlog = () => {
       title: aiData.title,
       subtitle: aiData.subtitle,
       description: aiData.description,
-      userEmail: "sdfkkd@gamil.com",
-      userImage: "sfdksdfkdsjk",
+      userEmail: user?.email,
+      userName: user?.displayName,
+      userImage: user?.photoURL,
     };
     Swal.fire({
       title: "Are you sure you want to post it?",
