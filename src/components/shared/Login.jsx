@@ -163,7 +163,7 @@ const Login = () => {
                       type="submit"
                       disabled={isSubmitting}
                     >
-                      Submit
+                      Login
                     </button>
                   </Form>
                 )}

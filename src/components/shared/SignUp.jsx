@@ -170,7 +170,7 @@ const SignUp = () => {
                       type="submit"
                       disabled={isSubmitting}
                     >
-                      Create
+                      Signup
                     </button>
                   </Form>
                 )}

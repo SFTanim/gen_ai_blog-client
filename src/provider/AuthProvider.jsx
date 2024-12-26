@@ -13,6 +13,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
@@ -20,6 +21,7 @@ const AuthProvider = ({ children }) => {
   const [darkTheme, setDarkTheme] = useLocalStorage("darkTheme", false);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const axiosPublic = useAxiosPublic();
 
   const toastWarning = (text) => {
     Swal.fire({
@@ -44,7 +46,6 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-
 
   // Login with email and password
   const userLogin = (email, password) => {
@@ -73,15 +74,24 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        const userInfo = { email: currentUser?.email };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res?.data?.token) {
+            localStorage.setItem("access_token", res?.data?.token);
+            setLoading(false);
+          }
+        });
+      } else {
+        localStorage.removeItem("access_token");
+      }
       setLoading(false);
     });
 
     return () => {
       unSubscribe();
     };
-  }, []);
-
-  console.log(user);
+  }, [axiosPublic]);
 
   const allFunctions = {
     user,
