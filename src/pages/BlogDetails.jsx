@@ -3,12 +3,12 @@ import useAllBlog from "../hooks/useAllBlog";
 import { useEffect } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { SlDislike, SlLike } from "react-icons/sl";
-import useAxiosPublic from "../hooks/useAxiosPublic";
 import useAuth from "../hooks/useAuth";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const BlogDetails = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const id = useParams().id;
   const { data: blog, isLoading, refetch } = useAllBlog(id);
 
@@ -19,7 +19,7 @@ const BlogDetails = () => {
 
   const handleLike = (id) => {
     const blogId = id;
-    axiosPublic.post(`/blogLike/${user?.email}/${blogId}`).then((res) => {
+    axiosSecure.post(`/blogLike/${user?.email}/${blogId}`).then((res) => {
       if (res?.data?.acknowledged) {
         refetch();
       }
@@ -28,7 +28,7 @@ const BlogDetails = () => {
 
   const handleDisike = (id) => {
     const blogId = id;
-    axiosPublic.post(`/blogDislike/${user?.email}/${blogId}`).then((res) => {
+    axiosSecure.post(`/blogDislike/${user?.email}/${blogId}`).then((res) => {
       if (res?.data?.acknowledged) {
         refetch();
       }
