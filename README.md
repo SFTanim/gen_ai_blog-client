@@ -4,7 +4,7 @@ This project focuses on a user-friendly application for an AI-driven blog platfo
 
 ## Live Link
 
-- [GenAIBlog]()
+- [GenAIBlog](https://tranquil-crepe-88ce75.netlify.app)
 
 ## Core Features
 
