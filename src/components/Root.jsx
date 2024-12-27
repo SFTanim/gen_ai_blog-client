@@ -12,7 +12,7 @@ const Root = () => {
       <div className="fixed z-40 w-full">
         <Navber></Navber>
       </div>
-      <div className=" min-h-screen px-2 lg:px-0 mt-20 lg:mt-24">
+      <div className="min-h-screen px-2 lg:px-0 mt-20 lg:mt-24">
         <Outlet></Outlet>
       </div>
     </div>

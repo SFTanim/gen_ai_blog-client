@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://gen-ai-blog-server.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -13,8 +13,7 @@ const useAxiosSecure = () => {
   axiosSecure.interceptors.request.use(
     function (config) {
       const token = localStorage.getItem("access_token");
-      config.headers.authorization = `Bearer ${token}`;
-      console.log("config form request:", config);
+      config.headers.authorization = `Bearar ${token}`;
       return config;
     },
     function (error) {
@@ -23,7 +22,6 @@ const useAxiosSecure = () => {
   );
   axiosSecure.interceptors.response.use(
     function (response) {
-      console.log("res from response: ", response);
       return response;
     },
     async (error) => {
@@ -35,6 +33,7 @@ const useAxiosSecure = () => {
       return Promise.reject(error);
     }
   );
+  return axiosSecure;
 };
 
 export default useAxiosSecure;

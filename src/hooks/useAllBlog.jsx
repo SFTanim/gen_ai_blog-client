@@ -11,7 +11,6 @@ const useAllBlog = (id) => {
     queryFn: async () => {
       if (id) {
         const res = await axiosSecure.get(`/blog/${id}`);
-        console.log(res);
         return res.data;
       } else {
         const res = await axiosPublic.get("/blogs");

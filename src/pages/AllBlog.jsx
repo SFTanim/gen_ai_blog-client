@@ -36,7 +36,7 @@ const AllBlog = () => {
 
   if (isLoading) {
     return (
-      <div className="flex w-full flex-col gap-4 mx-auto">
+      <div className="flex container mx-auto flex-col gap-4 ">
         <div className="skeleton h-32 w-full"></div>
         <div className="skeleton h-4 w-28"></div>
         <div className="skeleton h-4 w-full"></div>
@@ -110,7 +110,7 @@ const AllBlog = () => {
                           {blog?.userImage ? (
                             <div tabIndex={0} role="button" className="">
                               <img
-                                className="w-9 rounded-full"
+                                className="w-10 h-10 rounded-full"
                                 src={blog?.userImage || ""}
                                 alt="Profile"
                               />

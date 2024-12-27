@@ -179,7 +179,7 @@ const Navber = () => {
               {user?.photoURL ? (
                 <div tabIndex={0} role="button" className="">
                   <img
-                    className="w-9 rounded-full"
+                    className="w-10 h-10 rounded-full"
                     src={user?.photoURL || ""}
                     alt="Profile"
                   />

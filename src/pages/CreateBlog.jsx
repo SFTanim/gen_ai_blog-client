@@ -77,7 +77,7 @@ const CreateBlog = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse lg:flex-row items-center container mx-auto p-2 lg:pt-10">
+    <div className="flex flex-col-reverse lg:flex-row items-center container mx-auto p-2 lg:pt-5">
       {/* LottoImage */}
       <DotLottieReact
         src="https://lottie.host/7ee26a40-3808-4826-a1a5-de8af7083974/73w9BXYyAY.lottie"
@@ -98,7 +98,7 @@ const CreateBlog = () => {
 
         <div className="mt-4">
           {isLoading ? (
-            <div className="flex flex-col gap-4 shadow-lg" data-aos="fade-up">
+            <div className="flex flex-col gap-4 shadow-lg">
               <div className="skeleton h-32 w-full"></div>
               <div className="skeleton h-4 w-28"></div>
               <div className="skeleton h-4 w-full"></div>
@@ -106,7 +106,7 @@ const CreateBlog = () => {
             </div>
           ) : isError ? (
             // Error State
-            <div className="text-red-500 text-center" data-aos="fade-up">
+            <div className="text-red-500 text-center">
               <div role="alert" className="alert">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +142,7 @@ const CreateBlog = () => {
               </div>
             </div>
           ) : aiData ? (
-            <div className="flex  flex-col gap-4" data-aos="fade-up">
+            <div className="flex  flex-col gap-4">
               <div className="flex  flex-col gap-4 min-h-full">
                 <div className="card bg-base-100 h-full shadow-xl">
                   <div className="p-6 space-y-2">
@@ -168,7 +168,7 @@ const CreateBlog = () => {
               </div>
             </div>
           ) : (
-            <div className="mt-2" data-aos="fade-up">
+            <div className="mt-2">
               <Formik
                 initialValues={{ message: "" }}
                 validate={(values) => {
